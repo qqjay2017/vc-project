@@ -44,12 +44,14 @@
 import {
   ref,
   provide,
+  inject,
   useTemplateRef,
   onMounted,
   onBeforeUnmount,
   watch,
 } from "vue";
 import { ANCHOR_LAYOUT_CTX_KEY } from "./context";
+import { BIZ_CONFIG_KEY } from "@/components/BizConfigProvider/context";
 
 export interface AnchorItem {
   id: string;
@@ -71,6 +73,8 @@ const props = withDefaults(defineProps<Props>(), {
   scrollContainer: null,
 });
 
+const bizConfig = inject(BIZ_CONFIG_KEY, {});
+
 const rootEl = useTemplateRef<HTMLElement>("rootEl");
 const contentEl = useTemplateRef<HTMLElement>("contentEl");
 const collapsed = ref(false);
@@ -80,11 +84,11 @@ let observer: IntersectionObserver | null = null;
 provide(ANCHOR_LAYOUT_CTX_KEY, { contentEl, collapsed });
 
 function resolveContainer(): Element | null {
-  if (!props.scrollContainer) return null;
-  if (props.scrollContainer instanceof HTMLElement)
-    return props.scrollContainer;
+  const scrollContainer = props.scrollContainer ?? bizConfig.scrollContainer ?? null;
+  if (!scrollContainer) return null;
+  if (scrollContainer instanceof HTMLElement) return scrollContainer;
   // 从组件根节点向上查找，避免 document 全局查询跨越 shadow root
-  return rootEl.value?.closest(props.scrollContainer) ?? null;
+  return rootEl.value?.closest(scrollContainer) ?? null;
 }
 
 function scrollToAnchor(id: string) {
