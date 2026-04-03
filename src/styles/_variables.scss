@@ -1,0 +1,39 @@
+// Layout dimensions
+$header-height: 60px;
+$sidebar-width: 220px;
+
+// Colors
+$color-primary: #4e6ef2;
+$color-primary-hover: #3a5ae0;
+$color-bg-base: #f0f2f5;
+$color-bg-white: #ffffff;
+$color-bg-sidebar: #1d2535;
+$color-sidebar-text: #b0b8cc;
+$color-sidebar-text-active: #ffffff;
+$color-sidebar-item-hover: #2a3447;
+$color-sidebar-item-active: #4e6ef2;
+$color-header-border: #e8eaf0;
+$color-text-primary: #1a2035;
+$color-text-secondary: #6b7a99;
+
+// Typography
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-lg: 16px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Border
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-color: #e8eaf0;
+
+// Shadow
+$shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 2px 12px rgba(0, 0, 0, 0.12);
